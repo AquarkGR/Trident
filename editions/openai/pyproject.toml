@@ -1,0 +1,18 @@
+[project]
+name = "trident-openai"
+version = "0.1.0"
+description = "Prompt, plan, build: a research-grounded multi-stage agent pipeline on the OpenAI Agents SDK."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["openai-agents>=0.23"]
+
+[project.scripts]
+trident-openai = "trident_openai.cli:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+trident_openai = ["models.toml"]

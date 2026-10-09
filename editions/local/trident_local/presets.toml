@@ -1,0 +1,77 @@
+# One local model per machine, chosen by RAM. Quality comes from spending reasoning and context, not from a bigger model.
+# Models: Qwen3.5 family on Ollama (Apache-2.0). Sizes are Ollama q4 downloads; max_ctx leaves ~25% RAM headroom.
+# MoE "a3b"/"a10b" tags are preferred above 32 GB because only 3B/10B parameters are active per token, which is fast on CPU/unified memory.
+# On a large GPU, swap 35b-a3b for qwen3.5:27b (dense) for maximum quality. All values are conservative starting points.
+
+[ram.8]
+model = "qwen3.5:4b"
+max_ctx = 16384
+
+[ram.16]
+model = "qwen3.5:9b"
+max_ctx = 32768
+
+[ram.24]
+model = "qwen3.5:9b"
+max_ctx = 65536
+
+[ram.32]
+model = "qwen3.5:35b-a3b"
+max_ctx = 32768
+
+[ram.48]
+model = "qwen3.5:35b-a3b"
+max_ctx = 65536
+
+[ram.64]
+model = "qwen3.5:35b-a3b"
+max_ctx = 131072
+
+[ram.128]
+model = "qwen3.5:122b-a10b"
+max_ctx = 65536
+
+# Each stage spends a share of the machine's budget.
+# think: reasoning on/off · predict: max output tokens incl. reasoning · ctx: share of max_ctx
+# Multiply every predict with --budget (e.g. --budget 2 to let the model think twice as long).
+
+[stage.refine]
+think = false
+predict = 1024
+ctx = 0.25
+
+[stage.plan]
+think = true
+predict = 8192
+ctx = 1.0
+
+[stage.build_standard]
+think = false
+predict = 4096
+ctx = 0.5
+
+[stage.build_deep]
+think = true
+predict = 8192
+ctx = 1.0
+
+[stage.verify]
+think = true
+predict = 2048
+ctx = 0.5
+
+[stage.summary]
+think = false
+predict = 512
+ctx = 0.25
+
+# Qwen3.5 recommended sampling (model card).
+[sampling.thinking]
+temperature = 0.6
+top_p = 0.95
+top_k = 20
+
+[sampling.direct]
+temperature = 0.7
+top_p = 0.8
+top_k = 20

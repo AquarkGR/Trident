@@ -1,0 +1,18 @@
+[project]
+name = "trident-local"
+version = "0.1.0"
+description = "Prompt, plan, build on one local Qwen model sized to your RAM, spending reasoning and context as budget."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["ollama>=0.6"]
+
+[project.scripts]
+trident-local = "trident_local.cli:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+trident_local = ["presets.toml"]

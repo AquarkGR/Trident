@@ -1,0 +1,15 @@
+{
+  "name": "aquark",
+  "description": "Aquark's Claude Code plugins",
+  "owner": {
+    "name": "Aquark",
+    "url": "https://github.com/AquarkGR"
+  },
+  "plugins": [
+    {
+      "name": "trident",
+      "source": "./plugins/trident",
+      "description": "Prompt, plan, build: Haiku sharpens, Fable plans from open research, Sonnet or Opus ships, with licence checks and concise reports."
+    }
+  ]
+}

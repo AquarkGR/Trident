@@ -1,0 +1,20 @@
+{
+  "name": "trident",
+  "version": "0.1.0",
+  "description": "Prompt, plan, build: Haiku sharpens, Fable plans from open research, Sonnet or Opus ships, with licence checks and concise reports.",
+  "author": {
+    "name": "Aquark",
+    "url": "https://github.com/AquarkGR"
+  },
+  "homepage": "https://github.com/AquarkGR/Trident",
+  "repository": "https://github.com/AquarkGR/Trident",
+  "license": "MIT",
+  "keywords": [
+    "pipeline",
+    "planning",
+    "multi-model",
+    "research",
+    "reports"
+  ],
+  "displayName": "Trident"
+}

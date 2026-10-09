@@ -1,0 +1,23 @@
+# Every model reference lives here. Update this file when models change or are deprecated.
+# Override any stage at runtime with TRIDENT_<STAGE>_MODEL, e.g. TRIDENT_PLAN_MODEL=gpt-5.5
+# effort: none | minimal | low | medium | high | xhigh | max (support varies by model)
+
+[refine]
+model = "gpt-5.6-luna"
+effort = "low"
+
+[plan]
+model = "gpt-5.6-sol"
+effort = "high"
+
+[build_standard]
+model = "gpt-5.6-terra"
+effort = "medium"
+
+[build_deep]
+model = "gpt-5.6-sol"
+effort = "high"
+
+[verify]
+model = "gpt-5.6-luna"
+effort = "low"
